@@ -2,13 +2,13 @@
 * @Author: clown
 * @Date:   2016-04-05 23:42:27
 * @Last Modified by:   Administrator
-* @Last Modified time: 2016-04-06 10:42:04
+* @Last Modified time: 2016-04-06 13:57:27
 */
 
 'use strict';
 
 /**
- * 检测浏览器是否支持canvas API
+ * 检测浏览器是否支持 canvas API
  * @return {boolean} 返回布尔值
  */
 function supports_canvas() {
@@ -16,7 +16,7 @@ function supports_canvas() {
 }
 
 /**
- * 检测浏览器是否支持canvas 文本 API
+ * 检测浏览器是否支持 canvas 文本 API
  * @return {boolean} 返回布尔值
  */
 function supports_canvas_text() {
@@ -27,7 +27,7 @@ function supports_canvas_text() {
 }
 
 /**
- * 检测浏览器是否支持<video>
+ * 检测浏览器是否支持 <video>
  * (正常情况下，可以不用js去检测，直接使用该标签，如果支持的浏览器会解析播放视频，不支持的浏览器会忽略。)
  * @return {boolean} 返回布尔值
  */
@@ -74,4 +74,65 @@ function supports_webm_video() {
  */
 function supports_local_storage() {
 	return ('localStorage' in window) && window['localStorage'] !== null;
+}
+
+/**
+ * 检测浏览器是否支持 Web Worler
+ * @return {boolean} 返回布尔值
+ */
+function supports_web_workers() {
+	return !!window.Worker;
+}
+
+/**
+ * 检测浏览器是否支持离线特性
+ * @return {boolean} 返回布尔值
+ */
+function supports_offline() {
+	return !!window.applicationCache;
+}
+
+/**
+ * 检测浏览器是否支持地理位置特性
+ * @return {boolean} 返回布尔值
+ */
+function supports_geolocation() {
+	return !!navigator.geolocation;
+}
+
+/**
+ * 检测浏览器是否支持新的输入框类型
+ * @param  {string} iType [iType表示新的输入框类型，可以为：'search', 'number', 'range', 'color', 'tel', 'url', 'email', 'date', 'month', 'week', 'time', 'datetime', 'datetime-local']
+ * @return {boolean} 返回布尔值
+ */
+function supports_input_type(iType) {
+	var i = document.createElement('input');
+	i.setAttribute('type', iType);
+	return i.type !== 'text';
+}
+
+/**
+ * 检测浏览器是否支持 placeholder 属性
+ * @return {boolean} 返回布尔值
+ */
+function supports_input_placeholder() {
+	var i = document.createElement('input');
+	return 'placeholder' in i;
+}
+
+/**
+ * 检测浏览器是否支持 autofocus 属性
+ * @return {boolean} 返回布尔值
+ */
+function supports_input_autofocus() {
+	var i = document.createElement('input');
+	return 'autofocus' in i;
+}
+
+/**
+ * 检测浏览器是否支持 html5 微数据
+ * @return {[type]} [description]
+ */
+function supports_microdata_api() {
+	return !!document.getItems;
 }
